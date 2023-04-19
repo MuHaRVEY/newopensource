@@ -1,16 +1,19 @@
 import random
 
-def generate_random_string(length, uppercase, lowercase, digits):
-    """Generates a random string with given parameters.
+def generate_random_string(length: int, uppercase: bool, lowercase: bool, digits: bool) -> str:
+    """주어진 매개변수에 따라 랜덤한 문자열을 생성합니다.
 
     Args:
-        length (int): Length of the string to be generated.
-        uppercase (bool): Whether to include uppercase letters or not.
-        lowercase (bool): Whether to include lowercase letters or not.
-        digits (bool): Whether to include digits or not.
+        length (int): 생성할 문자열의 길이.
+        uppercase (bool): 대문자를 포함할지 여부.
+        lowercase (bool): 소문자를 포함할지 여부.
+        digits (bool): 숫자를 포함할지 여부.
+
+    Raises:
+        ValueError: uppercase, lowercase, digits 중 하나 이상이 True여야 합니다.
 
     Returns:
-        str: A random string of given length and parameters.
+        str: 주어진 길이와 매개변수에 따라 생성된 랜덤 문자열.
     """
 
     chars = ""
@@ -22,6 +25,6 @@ def generate_random_string(length, uppercase, lowercase, digits):
         chars += "0123456789"
 
     if not chars:
-        raise ValueError("At least one of uppercase, lowercase, or digits must be True.")
+        raise ValueError("대문자, 소문자, 숫자 중 하나 이상이 True여야 합니다.")
 
     return "".join(random.choices(chars, k=length))
